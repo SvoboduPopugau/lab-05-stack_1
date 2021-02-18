@@ -6,10 +6,17 @@
 template <typename T>
 class Stack_2{
     static_assert(std::is_move_constructible<T>::value);
-    static_assert(!std::is_copy_constructible<T>::value);
-public:
-    //TODO: Написать конструкторы и дестркутор
-public:
+//    static_assert(!std::is_copy_constructible<T>::value);
+   public:
+    Stack_2<T>(Stack_2<T>& tmp) = delete;
+    Stack_2<T>(Stack_2<T>&& tmp) noexcept {
+      Entry = tmp.Entry;
+      tmp.Entry = nullptr;
+    }
+    Stack_2(){
+       Entry = nullptr;
+    }
+   public:
     template <typename ... Args>
     void push_emplace(Args&&... value){
         auto* tmp = new Stack_object(T(std::forward<Args>(value)...));
@@ -31,7 +38,11 @@ public:
         }
     }
     const T& head() const{
+      if(Entry == nullptr){
+        throw std::runtime_error("Stack is empty");
+      } else{
         return Entry -> GetValue();
+      }
     }
     T pop(){
         if(Entry != nullptr) {
@@ -44,7 +55,6 @@ public:
             throw std::runtime_error("Stack is empty");
         }
     }
-
 private:
     Stack_object<T>* Entry;
 };
