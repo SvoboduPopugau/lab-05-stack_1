@@ -15,7 +15,7 @@ struct Stack_object{
     void SetPrevious(Stack_object* tmp){
         previous = tmp;
     }
-    const T& GetValue() const{
+    T& GetValue(){
         return value;
     }
     Stack_object* GetPrevious(){

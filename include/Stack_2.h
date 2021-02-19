@@ -6,7 +6,7 @@
 template <typename T>
 class Stack_2{
     static_assert(std::is_move_constructible<T>::value);
-//    static_assert(!std::is_copy_constructible<T>::value);
+    static_assert(!std::is_copy_constructible<T>::value);
    public:
     Stack_2<T>(Stack_2<T>& tmp) = delete;
     Stack_2<T>(Stack_2<T>&& tmp) noexcept {
@@ -47,7 +47,7 @@ class Stack_2{
     T pop(){
         if(Entry != nullptr) {
             Stack_object<T>* tmp = Entry->GetPrevious();
-            auto ret = Entry -> GetValue();
+            T ret = std::forward<T>(Entry -> GetValue());
             delete Entry;
             Entry = tmp;
             return ret;

@@ -31,7 +31,7 @@ public:
             Entry = tmp;
         }
     }
-    void push(const T& value){
+    void push(T& value){
         if(Entry == nullptr) {
             Entry = new Stack_object<T>(value);
         }
@@ -52,7 +52,8 @@ public:
     }
     const T& head() const{
       if(Entry != nullptr) {
-        return Entry->GetValue();
+        const T& ret = Entry->GetValue();
+        return ret;
       } else{
         throw std::runtime_error("Stack is empty");
       }
