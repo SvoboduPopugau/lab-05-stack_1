@@ -12,6 +12,6 @@ CMAKE_OPTS="$CMAKE_LINKER_OPTS $CMAKE_CONFIG_OPTS $CMAKE_TOOLCHAIN_OPTS"
 cmake -H. -B_builds $CMAKE_OPTS -DBUILD_COVERAGE=ON
 cmake --build _builds
 cmake --build _builds --target test
-cmake --build _builds --target gcov
+#cmake --build _builds --target gcov
 cmake --build _builds --target lcov
 gcovr -r  .
