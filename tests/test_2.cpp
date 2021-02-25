@@ -72,3 +72,4 @@ TEST(Stack_2Poping, Pop){
   Stack_2<Example> first;
   EXPECT_THROW(first.pop(), std::runtime_error);
 }
+
