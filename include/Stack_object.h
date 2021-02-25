@@ -21,6 +21,10 @@ struct Stack_object{
     Stack_object* GetPrevious(){
         return previous;
     }
+    ~Stack_object(){
+        value.~T();
+        previous = nullptr;
+    }
 private:
     T value;
     Stack_object* previous;

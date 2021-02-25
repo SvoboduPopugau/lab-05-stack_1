@@ -35,6 +35,7 @@ struct Example{
       return false;
     }
   }
+  ~Example() = default;
  public:
   int val_1;
   int val_2;
@@ -72,4 +73,3 @@ TEST(Stack_2Poping, Pop){
   Stack_2<Example> first;
   EXPECT_THROW(first.pop(), std::runtime_error);
 }
-

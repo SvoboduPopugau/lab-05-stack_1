@@ -16,6 +16,13 @@ class Stack_2{
     Stack_2(){
        Entry = nullptr;
     }
+    ~Stack_2(){
+      while (Entry != nullptr){
+        Stack_object<T>* tmp = Entry->GetPrevious();
+        delete Entry;
+        Entry = tmp;
+      }
+    }
    public:
     template <typename ... Args>
     void push_emplace(Args&&... value){
