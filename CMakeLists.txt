@@ -32,6 +32,8 @@ add_library(${PROJECT_NAME} STATIC
   # enum your files and delete this comment
   ${CMAKE_CURRENT_SOURCE_DIR}/sources/source.cpp
         include/Stack_1.h include/Stack_2.h include/Stack_object.h)
+#add_library(${PROJECT_NAME} INTERFACE
+#        include/Stack_object.h include/Stack_1.h include/Stack_2.h)
 
 add_executable(demo
   ${CMAKE_CURRENT_SOURCE_DIR}/demo/main.cpp
@@ -41,6 +43,10 @@ target_include_directories(${PROJECT_NAME} PUBLIC
   "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>"
   "$<INSTALL_INTERFACE:include>"
 )
+#target_include_directories(${PROJECT_NAME} INTERFACE
+#        "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>"
+#        "$<INSTALL_INTERFACE:include>"
+#        )
 
 target_link_libraries(demo ${PROJECT_NAME})
 
