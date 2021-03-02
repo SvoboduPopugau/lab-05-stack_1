@@ -62,5 +62,4 @@ public:
 private:
     Stack_object<T>* Entry;
 };
-
 #endif //LAB_05_STACK_STACK_1_H
